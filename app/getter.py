@@ -6,7 +6,7 @@ from more_itertools import chunked
 from models import Base, People
 
 
-class SWAPIExtractor:
+class SWAPIGetter:
     def __init__(self, chunk_size, engine, session):
         self.chunk_size = chunk_size
         self.engine = engine
@@ -100,6 +100,6 @@ class SWAPIExtractor:
         for task in tasks:
             await task
 
-    def extract_and_download_to_db(self, from_id, to_id):
+    def get_and_download_to_db(self, from_id, to_id):
         asyncio.run(self._run(from_id, to_id))
         print(f'Персонажи с id {from_id} по {to_id} (невкл.) успешно загружены в БД!')
